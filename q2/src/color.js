@@ -2,30 +2,36 @@ import React , { Component } from 'react';
 
 class ColorGenerator extends Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
-            selectedColor : [],
+            selectedColor : '',
             bgColor: [
                 '#1ec891',
                 '#ff725e',
                 '#ffd05b',
             ],
         }
-        this.random_color = this.random_color.bind(this);
+        this.getRandomColor= this.getRandomColor.bind(this);
     }
-    random_color() {
-        const item = this.state.bgColor[Math.floor(Math.random()*this.state.bgColor.length)];
+    getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
         this.setState({
-            selectedColor: item,
+            selectedColor : color,
+            state : {bgColor : [...this.state.bgColor , this.state.selectedColor]}
         })
-    } 
+    }
     render() {
         return(
             <ul>
                 <li>
-                    <button onClick={this.random_color}>Add color</button>
+                    {/* <span>{this.state.selectedColor}</span> */}
+                    <button  onClick={this.getRandomColor}>Add color</button>
                 </li>
-                {this.state.selectedColor.map(col => <li>{col}</li>)}
+                {this.state.bgColor.map(col => <li>{col}</li>)}
             </ul>
         )
     }
