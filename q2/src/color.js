@@ -4,7 +4,7 @@ class ColorGenerator extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedColor: '',
+            selectedColor : [],
             bgColor: [
                 '#1ec891',
                 '#ff725e',

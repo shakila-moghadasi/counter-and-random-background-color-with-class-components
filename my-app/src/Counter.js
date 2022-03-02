@@ -16,9 +16,11 @@ class Counter extends Component {
         })
     }  
     decrement(){
+        if(this.state.counter > 0){
         this.setState({
                 counter : this.state.counter - 1
         })
+    }
     }
     render() {
         return (
